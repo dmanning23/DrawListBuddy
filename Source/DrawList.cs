@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using GameTimer;
 
 namespace DrawListBuddy
@@ -101,7 +102,7 @@ namespace DrawListBuddy
 		/// <param name="BottomRight">the bottom right corner of the quad</param>
 		/// <param name="iBmpID">the id of teh bitmap for this quad</param>
 		/// <param name="iLayer">the layer to render the bitmap at</param>
-		public void AddQuad(int iImageID, 
+		public void AddQuad(Texture2D iImageID, 
 			Vector2 position, 
 			Color color, 
 			float fRotation, 
@@ -126,7 +127,7 @@ namespace DrawListBuddy
 		/// Render the draw list!
 		/// </summary>
 		/// <param name="MyRenderer">the renderer to sent it to</param>
-		public void Render(IRenderer MyRenderer)
+		public void Render(Renderer MyRenderer)
 		{
 			m_listQuads.Sort(new QuadSort());
 			for (int i = 0; i < m_listQuads.Count; i++)

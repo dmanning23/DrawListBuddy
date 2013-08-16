@@ -40,7 +40,7 @@ namespace DrawListBuddy
 		/// <param name="BottomRight">the bottom right corner of the quad</param>
 		/// <param name="iBmpID">the id of teh bitmap for this quad</param>
 		/// <param name="iLayer">the layer to render the bitmpa at</param>
-		public Quad(int iImageID, 
+		public Quad(Texture2D iImageID, 
 			Vector2 position, 
 			float fRotation, 
 			bool bFlip, 
@@ -50,15 +50,13 @@ namespace DrawListBuddy
 			Initialize(iImageID, position, fRotation, bFlip, iLayer, PaletteSwapColor);
 		}
 
-		public void Initialize(int iImageID, 
+		public void Initialize(Texture2D iImageID, 
 			Vector2 position, 
 			float fRotation, 
 			bool bFlip,
 			int iLayer,
 			Color PaletteSwapColor)
 		{
-			Debug.Assert(iImageID >= 0);
-
 			m_iImageID = iImageID;
 			m_position = position;
 			m_fRotation = fRotation;
@@ -71,7 +69,7 @@ namespace DrawListBuddy
 		/// Render this textured quad
 		/// </summary>
 		/// <param name="MyRenderer">The renderer to draw this dude on</param>
-		public void Render(Color DrawlistColor, IRenderer MyRenderer, float fScale)
+		public void Render(Color DrawlistColor, Renderer MyRenderer, float fScale)
 		{
 			if (m_PaletteSwapColor != Color.White)
 			{

@@ -4,3 +4,6 @@
 [submodule "externals/GameTimer"]
 	path = externals/GameTimer
 	url = https://github.com/dmanning23/GameTimer.git
+[submodule "externals/Filename"]
+	path = externals/Filename
+	url = https://github.com/dmanning23/Filename.git
