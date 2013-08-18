@@ -24,14 +24,14 @@ namespace DrawListBuddy
 		/// <summary>
 		/// My own content manager, so images can be loaded separate from xml
 		/// </summary>
-		private ContentManager m_Content;
+		public ContentManager Content { get; private set; }
 		private Game m_Game; //needed to initialize content manager
 
 		//the graphics card device manager
 		private GraphicsDevice m_Graphics;
 
 		//sprite batch being used
-		private SpriteBatch m_SpriteBatch;
+		public SpriteBatch SpriteBatch { get; private set; }
 
 		#endregion //Member Variables
 
@@ -58,12 +58,12 @@ namespace DrawListBuddy
 
 			//set up the content manager
 			Debug.Assert(null != m_Game);
-			Debug.Assert(null == m_Content);
-			m_Content = new ContentManager(m_Game.Services, "Content");
+			Debug.Assert(null == Content);
+			Content = new ContentManager(m_Game.Services, "Content");
 
 			//set up all the stuff
 			m_Graphics = null;
-			m_SpriteBatch = null;
+			SpriteBatch = null;
 		}
 
 		/// <summary>
@@ -77,7 +77,7 @@ namespace DrawListBuddy
 			m_ScreenRect = screenRect;
 			m_TitleSafeArea = titleSafeRect;
 
-			m_SpriteBatch = new SpriteBatch(m_Graphics);
+			SpriteBatch = new SpriteBatch(m_Graphics);
 
 			//setup all the rendering stuff
 			Debug.Assert(null != m_Graphics);
@@ -97,7 +97,7 @@ namespace DrawListBuddy
 		public void UnloadGraphicsContent()
 		{
 			//unload the bitmaps
-			m_Content.Unload();
+			Content.Unload();
 		}
 
 		#endregion
@@ -112,23 +112,11 @@ namespace DrawListBuddy
 		public Texture2D LoadBitmap(FilenameBuddy strBitmapFile)
 		{
 			Debug.Assert(null != strBitmapFile);
-			Debug.Assert(null != m_Content);
+			Debug.Assert(null != Content);
 			Debug.Assert(strBitmapFile.ToString().Length > 0);
 
 			//create the ctexture thing
-			return m_Content.Load<Texture2D>(strBitmapFile.GetRelPathFileNoExt());
-		}
-
-		public SpriteBatch SpriteBatch()
-		{
-			Debug.Assert(null != m_SpriteBatch);
-			return m_SpriteBatch;
-		}
-
-		public ContentManager Content()
-		{
-			Debug.Assert(null != m_Content);
-			return m_Content;
+			return Content.Load<Texture2D>(strBitmapFile.GetRelPathFileNoExt());
 		}
 
 		public void Draw(
@@ -139,7 +127,7 @@ namespace DrawListBuddy
 			bool bFlip,
 			float fScale)
 		{
-			m_SpriteBatch.Draw(
+			SpriteBatch.Draw(
 				iImageID,
 				Position,
 				null,
@@ -158,7 +146,7 @@ namespace DrawListBuddy
 			float fRotation,
 			bool bFlip)
 		{
-			m_SpriteBatch.Draw(
+			SpriteBatch.Draw(
 				iImageID,
 				Destination,
 				null,
@@ -171,7 +159,7 @@ namespace DrawListBuddy
 
 		public void SpriteBatchBegin(BlendState myBlendState, Matrix translation)
 		{
-			m_SpriteBatch.Begin(SpriteSortMode.Immediate, //TODO: switch this to deferred sorting?
+			SpriteBatch.Begin(SpriteSortMode.Deferred, //TODO: switch this to deferred sorting?
 				myBlendState, 
 				null,
 				null,
@@ -186,7 +174,7 @@ namespace DrawListBuddy
 		/// <param name=""></param>
 		public void SpriteBatchEnd()
 		{
-			m_SpriteBatch.End();
+			SpriteBatch.End();
 		}
 
 		#endregion

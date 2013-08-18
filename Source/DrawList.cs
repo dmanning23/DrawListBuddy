@@ -82,6 +82,7 @@ namespace DrawListBuddy
 			m_listQuads = new List<Quad>();
 			m_CurrentColor = Color.White;
 			m_fStartAlpha = 255;
+			m_fScale = 1.0f;
 		}
 
 		public void Set(float fStartTime, Color fStartColor, float fScale)
