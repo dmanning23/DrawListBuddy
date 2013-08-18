@@ -12,7 +12,14 @@ namespace DrawListBuddy
 	{
 		public int Compare(Quad quad1, Quad quad2)
 		{
-			return quad2.Layer.CompareTo(quad1.Layer);
+			if (quad2.Layer != quad1.Layer)
+			{
+				return quad2.Layer.CompareTo(quad1.Layer);
+			}
+			else
+			{
+				return quad2.ListPosition.CompareTo(quad1.ListPosition);
+			}
 		}
 	}
 }

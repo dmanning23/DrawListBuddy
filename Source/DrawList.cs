@@ -114,13 +114,13 @@ namespace DrawListBuddy
 			if (g_listQuadWarehouse.Count > 0)
 			{
 				Quad myQuad = g_listQuadWarehouse.Pop();
-				myQuad.Initialize(iImageID, position, fRotation, bFlip, iLayer, color);
+				myQuad.Initialize(iImageID, position, fRotation, bFlip, iLayer, color, m_listQuads.Count);
 				m_listQuads.Add(myQuad);
 			}
 			else
 			{
 				//otherwise order up a new one
-				m_listQuads.Add(new Quad(iImageID, position, fRotation, bFlip, iLayer, color));
+				m_listQuads.Add(new Quad(iImageID, position, fRotation, bFlip, iLayer, color, m_listQuads.Count));
 			}
 		}
 

@@ -3,7 +3,6 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Filename;
 
 namespace DrawListBuddy
 {
@@ -103,21 +102,6 @@ namespace DrawListBuddy
 		#endregion
 
 		#region Methods
-
-		/// <summary>
-		/// Load a bitmap into the system
-		/// </summary>
-		/// <param name="strBitmapFile">name of the bitmap to load</param>
-		/// <returns>ID of the bitmap</returns>
-		public Texture2D LoadBitmap(FilenameBuddy strBitmapFile)
-		{
-			Debug.Assert(null != strBitmapFile);
-			Debug.Assert(null != Content);
-			Debug.Assert(strBitmapFile.ToString().Length > 0);
-
-			//create the ctexture thing
-			return Content.Load<Texture2D>(strBitmapFile.GetRelPathFileNoExt());
-		}
 
 		public void Draw(
 			Texture2D iImageID,

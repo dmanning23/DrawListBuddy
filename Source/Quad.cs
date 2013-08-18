@@ -27,6 +27,13 @@ namespace DrawListBuddy
 		/// </summary>
 		public int Layer { get; set; }
 
+		/// <summary>
+		/// The position of this wuad in the drawlist, quads added later have higher number
+		/// If two quads have the same layer, the QuadSort uses this number to sort them out
+		/// </summary>
+		/// <value>The list position.</value>
+		public int ListPosition { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -45,9 +52,10 @@ namespace DrawListBuddy
 			float fRotation, 
 			bool bFlip, 
 			int iLayer,
-			Color PaletteSwapColor)
+			Color PaletteSwapColor,
+			int iListPos)
 		{
-			Initialize(iImageID, position, fRotation, bFlip, iLayer, PaletteSwapColor);
+			Initialize(iImageID, position, fRotation, bFlip, iLayer, PaletteSwapColor, iListPos);
 		}
 
 		public void Initialize(Texture2D iImageID, 
@@ -55,7 +63,8 @@ namespace DrawListBuddy
 			float fRotation, 
 			bool bFlip,
 			int iLayer,
-			Color PaletteSwapColor)
+			Color PaletteSwapColor,
+			int iListPos)
 		{
 			m_iImageID = iImageID;
 			m_position = position;
@@ -63,6 +72,7 @@ namespace DrawListBuddy
 			m_bFlip = bFlip;
 			Layer = iLayer;
 			m_PaletteSwapColor = PaletteSwapColor;
+			ListPosition = iListPos;
 		}
 
 		/// <summary>
