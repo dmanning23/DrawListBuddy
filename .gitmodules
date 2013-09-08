@@ -5,3 +5,6 @@
 	path = externals/GameTimer
 	url = https://github.com/dmanning23/GameTimer.git
 
+[submodule "externals/RenderBuddy"]
+	path = externals/RenderBuddy
+	url = git@github.com:dmanning23/RenderBuddy.git

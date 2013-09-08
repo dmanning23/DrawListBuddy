@@ -42,23 +42,24 @@
     <Compile Include="..\Source\QuadSort.cs">
       <Link>QuadSort.cs</Link>
     </Compile>
-    <Compile Include="..\Source\XNARenderer.cs">
-      <Link>XNARenderer.cs</Link>
-    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj">
+    <ProjectReference Include="..\externals\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj">
       <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
       <Name>Lidgren.Network.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
+    <ProjectReference Include="..\externals\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
       <Project>{7DE47032-A904-4C29-BD22-2D235E8D91BA}</Project>
       <Name>MonoGame.Framework.WindowsGL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\GameTimer\Windows\GameTimer.Windows.csproj">
+    <ProjectReference Include="..\externals\GameTimer\Windows\GameTimer.Windows.csproj">
       <Project>{6B6D4188-5C03-4E16-923B-96FDBC85B91A}</Project>
       <Name>GameTimer.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\externals\RenderBuddy\Windows\RenderBuddy.Windows.csproj">
+      <Project>{5C9D6145-A763-4B79-8541-0C44C6DEE72D}</Project>
+      <Name>RenderBuddy.Windows</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
