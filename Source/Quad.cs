@@ -9,11 +9,11 @@ namespace DrawListBuddy
 	/// <summary>
 	/// objects used to sort images in a draw list before they are actually rendered
 	/// </summary>
-	public class Quad
+	public class Quad<T>
 	{
 		#region Member Variables
 
-		private Texture2D m_iImageID;
+		private T m_Image;
 		private Vector2 m_position;
 		private float m_fRotation;
 		private bool m_bFlip;
@@ -48,7 +48,7 @@ namespace DrawListBuddy
 		/// <param name="BottomRight">the bottom right corner of the quad</param>
 		/// <param name="iBmpID">the id of teh bitmap for this quad</param>
 		/// <param name="iLayer">the layer to render the bitmpa at</param>
-		public Quad(Texture2D iImageID, 
+		public Quad(T image, 
 			Vector2 position, 
 			float fRotation, 
 			bool bFlip, 
@@ -56,10 +56,10 @@ namespace DrawListBuddy
 			Color PaletteSwapColor,
 			int iListPos)
 		{
-			Initialize(iImageID, position, fRotation, bFlip, iLayer, PaletteSwapColor, iListPos);
+			Initialize(image, position, fRotation, bFlip, iLayer, PaletteSwapColor, iListPos);
 		}
 
-		public void Initialize(Texture2D iImageID, 
+		public void Initialize(T image, 
 			Vector2 position, 
 			float fRotation, 
 			bool bFlip,
@@ -67,7 +67,7 @@ namespace DrawListBuddy
 			Color PaletteSwapColor,
 			int iListPos)
 		{
-			m_iImageID = iImageID;
+			m_Image = image;
 			m_position = position;
 			m_fRotation = fRotation;
 			m_bFlip = bFlip;
@@ -80,7 +80,7 @@ namespace DrawListBuddy
 		/// Render this textured quad
 		/// </summary>
 		/// <param name="MyRenderer">The renderer to draw this dude on</param>
-		public void Render(Color DrawlistColor, Renderer MyRenderer, float fScale)
+		public void Render(Color DrawlistColor, IRenderer<T> MyRenderer, float fScale)
 		{
 			if (m_PaletteSwapColor != Color.White)
 			{
@@ -90,7 +90,7 @@ namespace DrawListBuddy
 				FinalColor.A = DrawlistColor.A; //use the alpha value from the drawlist color
 
 				MyRenderer.Draw(
-					m_iImageID,
+					m_Image,
 					m_position,
 					FinalColor,
 					m_fRotation,
@@ -101,7 +101,7 @@ namespace DrawListBuddy
 			{
 				//Send this guy to the renderer
 				MyRenderer.Draw(
-					m_iImageID,
+					m_Image,
 					m_position,
 					DrawlistColor,
 					m_fRotation,

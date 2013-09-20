@@ -7,7 +7,7 @@ using RenderBuddy;
 
 namespace DrawListBuddy
 {
-	public class DrawList
+	public class DrawList<T>
 	{
 		#region Member Variables
 
@@ -15,10 +15,10 @@ namespace DrawListBuddy
 		private CountdownTimer m_Timer;
 
 		//warehouse of quads
-		private static Stack<Quad> g_listQuadWarehouse;
+		private static Stack<Quad<T>> g_listQuadWarehouse;
 
 		//the list of quads to draw
-		private List<Quad> m_listQuads;
+		private List<Quad<T>> m_listQuads;
 
 		//The color to render with
 		private Color m_CurrentColor;
@@ -71,7 +71,7 @@ namespace DrawListBuddy
 
 		static DrawList()
 		{
-			g_listQuadWarehouse = new Stack<Quad>();
+			g_listQuadWarehouse = new Stack<Quad<T>>();
 		}
 
 		/// <summary>
@@ -80,7 +80,7 @@ namespace DrawListBuddy
 		public DrawList()
 		{
 			m_Timer = new CountdownTimer();
-			m_listQuads = new List<Quad>();
+			m_listQuads = new List<Quad<T>>();
 			m_CurrentColor = Color.White;
 			m_fStartAlpha = 255;
 			m_fScale = 1.0f;
@@ -104,7 +104,7 @@ namespace DrawListBuddy
 		/// <param name="BottomRight">the bottom right corner of the quad</param>
 		/// <param name="iBmpID">the id of teh bitmap for this quad</param>
 		/// <param name="iLayer">the layer to render the bitmap at</param>
-		public void AddQuad(Texture2D iImageID, 
+		public void AddQuad(T image, 
 			Vector2 position, 
 			Color color, 
 			float fRotation, 
@@ -114,14 +114,14 @@ namespace DrawListBuddy
 			//check if there is a quad in the warehouse
 			if (g_listQuadWarehouse.Count > 0)
 			{
-				Quad myQuad = g_listQuadWarehouse.Pop();
-				myQuad.Initialize(iImageID, position, fRotation, bFlip, iLayer, color, m_listQuads.Count);
+				Quad<T> myQuad = g_listQuadWarehouse.Pop();
+				myQuad.Initialize(image, position, fRotation, bFlip, iLayer, color, m_listQuads.Count);
 				m_listQuads.Add(myQuad);
 			}
 			else
 			{
 				//otherwise order up a new one
-				m_listQuads.Add(new Quad(iImageID, position, fRotation, bFlip, iLayer, color, m_listQuads.Count));
+				m_listQuads.Add(new Quad<T>(image, position, fRotation, bFlip, iLayer, color, m_listQuads.Count));
 			}
 		}
 
@@ -129,9 +129,9 @@ namespace DrawListBuddy
 		/// Render the draw list!
 		/// </summary>
 		/// <param name="MyRenderer">the renderer to sent it to</param>
-		public void Render(Renderer MyRenderer)
+		public void Render(IRenderer<T> MyRenderer)
 		{
-			m_listQuads.Sort(new QuadSort());
+			m_listQuads.Sort(new QuadSort<T>());
 			for (int i = 0; i < m_listQuads.Count; i++)
 			{
 				m_listQuads[i].Render(m_CurrentColor, MyRenderer, m_fScale);
