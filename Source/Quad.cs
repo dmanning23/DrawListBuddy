@@ -9,11 +9,11 @@ namespace DrawListBuddy
 	/// <summary>
 	/// objects used to sort images in a draw list before they are actually rendered
 	/// </summary>
-	public class Quad<T>
+	public class Quad
 	{
 		#region Member Variables
 
-		private T m_Image;
+		private ITexture m_Image;
 		private Vector2 m_position;
 		private float m_fRotation;
 		private bool m_bFlip;
@@ -48,7 +48,7 @@ namespace DrawListBuddy
 		/// <param name="BottomRight">the bottom right corner of the quad</param>
 		/// <param name="iBmpID">the id of teh bitmap for this quad</param>
 		/// <param name="iLayer">the layer to render the bitmpa at</param>
-		public Quad(T image, 
+		public Quad(ITexture image, 
 			Vector2 position, 
 			float fRotation, 
 			bool bFlip, 
@@ -59,7 +59,7 @@ namespace DrawListBuddy
 			Initialize(image, position, fRotation, bFlip, iLayer, PaletteSwapColor, iListPos);
 		}
 
-		public void Initialize(T image, 
+		public void Initialize(ITexture image, 
 			Vector2 position, 
 			float fRotation, 
 			bool bFlip,
@@ -80,7 +80,7 @@ namespace DrawListBuddy
 		/// Render this textured quad
 		/// </summary>
 		/// <param name="MyRenderer">The renderer to draw this dude on</param>
-		public void Render(Color DrawlistColor, IRenderer<T> MyRenderer, float fScale)
+		public void Render(Color DrawlistColor, IRenderer MyRenderer, float fScale)
 		{
 			if (m_PaletteSwapColor != Color.White)
 			{
