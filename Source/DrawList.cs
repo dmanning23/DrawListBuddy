@@ -157,6 +157,11 @@ namespace DrawListBuddy
 			Quads.Clear();
 		}
 
+		/// <summary>
+		/// Update the drawlist.
+		/// </summary>
+		/// <param name="rClock">R clock.</param>
+		/// <returns>bool: true if the drawlist is still alive, false if it is dead</returns>
 		public bool Update(GameClock rClock)
 		{
 			Debug.Assert(rClock.TimeDelta >= 0.0f);
@@ -165,7 +170,8 @@ namespace DrawListBuddy
 
 			if (0.0f >= Timer.RemainingTime())
 			{
-				return true;
+				//This drawlist is dead!
+				return false;
 			}
 			else
 			{
@@ -175,22 +181,14 @@ namespace DrawListBuddy
 				alpha channel algo
 				255 * (current time / total time) = alpha channel
 				*/
-				float fCurTime = Timer.RemainingTime();
-				float fEndTime = Timer.CountdownLength;
-				Debug.Assert(fCurTime <= fEndTime);
-				float fCurDelta = fCurTime / fEndTime;
 
 				//now that we have the current time delta, multiply the alpha by that
-				float fCurAlpha = StartAlpha * fCurDelta;
-
-				//Debug.Assert(fCurAlpha <= 255.0f);
-				//Debug.Assert(fCurAlpha > 0.0f);
-				//Debug.Assert(fCurAlpha <= (float)CurrentColor.A);
-
+				float fCurAlpha = StartAlpha * Timer.Lerp();
 				m_CurrentColor.A = (byte)fCurAlpha;
 			}
 
-			return false;
+			//This drawlist is still alive and needs to be updated again next frame
+			return true;
 		}
 
 		#endregion
