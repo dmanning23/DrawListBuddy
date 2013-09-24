@@ -171,6 +171,7 @@ namespace DrawListBuddy
 			if (0.0f >= Timer.RemainingTime())
 			{
 				//This drawlist is dead!
+				m_CurrentColor.A = 0;
 				return false;
 			}
 			else
