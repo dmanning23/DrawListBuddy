@@ -11,26 +11,24 @@ namespace DrawListBuddy
 	{
 		#region Member Variables
 
-		//This is an optional timer for this drawlist
-		private CountdownTimer m_Timer;
-
-		//warehouse of quads
+		/// <summary>
+		/// warehouse of quads
+		/// </summary>
 		private static Stack<Quad> g_listQuadWarehouse;
 
-		//the list of quads to draw
-		private List<Quad> m_listQuads;
-
-		//The color to render with
+		/// <summary>
+		/// The color to render with
+		/// </summary>
 		private Color m_CurrentColor;
-
-		//the alpha transparency to start with
-		private float m_fStartAlpha;
-
-		private float m_fScale;
 
 		#endregion
 
 		#region Properties
+
+		/// <summary>
+		/// the list of quads to draw
+		/// </summary>
+		public List<Quad> Quads { get; private set; }
 
 		/// <summary>
 		/// Get or set the m_CurrentColor member variable
@@ -42,28 +40,20 @@ namespace DrawListBuddy
 		}
 
 		/// <summary>
-		/// Get or set the m_fAlpha member variable
+		/// the alpha transparency to start with
 		/// </summary>
-		public float StartAlpha
-		{
-			get { return m_fStartAlpha; }
-			set { m_fStartAlpha = value; }
-		}
+		public float StartAlpha { get; set; }
 
 		/// <summary>
-		/// Get or set the m_Timer member variable
+		/// This is an optional timer for this drawlist
 		/// </summary>
-		public CountdownTimer Timer
-		{
-			get { return m_Timer; }
-			set { m_Timer = value; }
-		}
+		public CountdownTimer Timer { get; private set; }
 
-		public float Scale
-		{
-			get { return m_fScale; }
-			set { m_fScale = value; }
-		}
+		/// <summary>
+		/// The scale to render this dudes stuff at
+		/// </summary>
+		/// <value>The scale.</value>
+		public float Scale { get; set; }
 
 		#endregion
 
@@ -79,50 +69,58 @@ namespace DrawListBuddy
 		/// </summary>
 		public DrawList()
 		{
-			m_Timer = new CountdownTimer();
-			m_listQuads = new List<Quad>();
+			Timer = new CountdownTimer();
+			Quads = new List<Quad>();
 			m_CurrentColor = Color.White;
-			m_fStartAlpha = 255;
-			m_fScale = 1.0f;
+			StartAlpha = 255;
+			Scale = 1.0f;
 		}
 
 		public void Set(float fStartTime, Color fStartColor, float fScale)
 		{
 			Flush();
-			m_Timer.Start(fStartTime);
+			Timer.Start(fStartTime);
 			m_CurrentColor = fStartColor;
-			m_fStartAlpha = fStartColor.A;
-			m_fScale = fScale;
+			StartAlpha = fStartColor.A;
+			Scale = fScale;
 		}
 
 		/// <summary>
 		/// Add a quad to this draw list
 		/// </summary>
-		/// <param name="UpperLeft">the upper left corner of the quad</param>
-		/// <param name="UpperRight">the upper right corner of the quad</param>
-		/// <param name="BottomLeft">the bottom left corner of the quad</param>
-		/// <param name="BottomRight">the bottom right corner of the quad</param>
-		/// <param name="iBmpID">the id of teh bitmap for this quad</param>
+		/// <param name="image">the id of teh bitmap for this quad</param>
+		/// <param name="position">the position to render the upper left at</param>
+		/// <param name="paletteSwapColor">the color to tint this quad</param>
+		/// <param name="fRotation">the amount to rotate this image</param>
+		/// <param name="bFlip">whether or not this image is flipped</param>
 		/// <param name="iLayer">the layer to render the bitmap at</param>
 		public void AddQuad(ITexture image, 
-			Vector2 position, 
-			Color color, 
-			float fRotation, 
-			bool bFlip, 
-			int iLayer)
+		                    Vector2 position, 
+		                    Color paletteSwapColor, 
+		                    float fRotation, 
+		                    bool bFlip, 
+		                    int iLayer)
 		{
 			//check if there is a quad in the warehouse
 			if (g_listQuadWarehouse.Count > 0)
 			{
 				Quad myQuad = g_listQuadWarehouse.Pop();
-				myQuad.Initialize(image, position, fRotation, bFlip, iLayer, color, m_listQuads.Count);
-				m_listQuads.Add(myQuad);
+				myQuad.Initialize(image, position, paletteSwapColor, fRotation, bFlip, iLayer, Quads.Count);
+				Quads.Add(myQuad);
 			}
 			else
 			{
 				//otherwise order up a new one
-				m_listQuads.Add(new Quad(image, position, fRotation, bFlip, iLayer, color, m_listQuads.Count));
+				Quads.Add(new Quad(image, position, paletteSwapColor, fRotation, bFlip, iLayer, Quads.Count));
 			}
+		}
+
+		/// <summary>
+		/// Sort the quads in this drwalist
+		/// </summary>
+		public void Sort()
+		{
+			Quads.Sort(new QuadSort());
 		}
 
 		/// <summary>
@@ -131,10 +129,10 @@ namespace DrawListBuddy
 		/// <param name="MyRenderer">the renderer to sent it to</param>
 		public void Render(IRenderer MyRenderer)
 		{
-			m_listQuads.Sort(new QuadSort());
-			for (int i = 0; i < m_listQuads.Count; i++)
+			Sort();
+			for (int i = 0; i < Quads.Count; i++)
 			{
-				m_listQuads[i].Render(m_CurrentColor, MyRenderer, m_fScale);
+				Quads[i].Render(m_CurrentColor, MyRenderer, Scale);
 			}
 		}
 
@@ -144,11 +142,11 @@ namespace DrawListBuddy
 		public void Flush()
 		{
 			//push all the existing quads into the warehouse
-			for (int i = 0; i < m_listQuads.Count; i++)
+			for (int i = 0; i < Quads.Count; i++)
 			{
 				if (g_listQuadWarehouse.Count < 100)
 				{
-					g_listQuadWarehouse.Push(m_listQuads[i]);
+					g_listQuadWarehouse.Push(Quads[i]);
 				}
 				else
 				{
@@ -156,16 +154,16 @@ namespace DrawListBuddy
 				}
 			}
 
-			m_listQuads.Clear();
+			Quads.Clear();
 		}
 
 		public bool Update(GameClock rClock)
 		{
 			Debug.Assert(rClock.TimeDelta >= 0.0f);
 
-			m_Timer.Update(rClock);
+			Timer.Update(rClock);
 
-			if (0.0f >= m_Timer.RemainingTime())
+			if (0.0f >= Timer.RemainingTime())
 			{
 				return true;
 			}
@@ -177,13 +175,13 @@ namespace DrawListBuddy
 				alpha channel algo
 				255 * (current time / total time) = alpha channel
 				*/
-				float fCurTime = m_Timer.RemainingTime();
-				float fEndTime = m_Timer.CountdownLength;
+				float fCurTime = Timer.RemainingTime();
+				float fEndTime = Timer.CountdownLength;
 				Debug.Assert(fCurTime <= fEndTime);
 				float fCurDelta = fCurTime / fEndTime;
 
 				//now that we have the current time delta, multiply the alpha by that
-				float fCurAlpha = m_fStartAlpha * fCurDelta;
+				float fCurAlpha = StartAlpha * fCurDelta;
 
 				//Debug.Assert(fCurAlpha <= 255.0f);
 				//Debug.Assert(fCurAlpha > 0.0f);

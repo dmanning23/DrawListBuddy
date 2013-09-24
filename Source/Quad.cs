@@ -11,29 +11,29 @@ namespace DrawListBuddy
 	/// </summary>
 	public class Quad
 	{
-		#region Member Variables
-
-		private ITexture m_Image;
-		private Vector2 m_position;
-		private float m_fRotation;
-		private bool m_bFlip;
-		private Color m_PaletteSwapColor;
-
-		#endregion //Member Variables
-
 		#region Properties
+
+		public ITexture Image { get; private set; }
+
+		public Vector2 Position { get; private set; }
+
+		public float Rotation { get; private set; }
+
+		public bool Flip { get; private set; }
 
 		/// <summary>
 		/// Get or set the layer to render at
 		/// </summary>
-		public int Layer { get; set; }
+		public int Layer { get; private set; }
+
+		public Color PaletteSwapColor { get; private set; }
 
 		/// <summary>
 		/// The position of this wuad in the drawlist, quads added later have higher number
 		/// If two quads have the same layer, the QuadSort uses this number to sort them out
 		/// </summary>
 		/// <value>The list position.</value>
-		public int ListPosition { get; set; }
+		public int ListPosition { get; private set; }
 
 		#endregion //Properties
 
@@ -42,38 +42,68 @@ namespace DrawListBuddy
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		/// <param name="UpperLeft">the upper left corner of the quad</param>
-		/// <param name="UpperRight">the upper right corner of the quad</param>
-		/// <param name="BottomLeft">the bottom left corner of the quad</param>
-		/// <param name="BottomRight">the bottom right corner of the quad</param>
-		/// <param name="iBmpID">the id of teh bitmap for this quad</param>
-		/// <param name="iLayer">the layer to render the bitmpa at</param>
+		/// <param name="image">the id of teh bitmap for this quad</param>
+		/// <param name="position">the position to render the upper left at</param>
+		/// <param name="paletteSwapColor">the color to tint this quad</param>
+		/// <param name="fRotation">the amount to rotate this image</param>
+		/// <param name="bFlip">whether or not this image is flipped</param>
+		/// <param name="iLayer">the layer to render the bitmap at</param>
 		public Quad(ITexture image, 
-			Vector2 position, 
-			float fRotation, 
-			bool bFlip, 
-			int iLayer,
-			Color PaletteSwapColor,
-			int iListPos)
+		            Vector2 position, 
+		            Color paletteSwapColor,
+		            float fRotation, 
+		            bool bFlip, 
+		            int iLayer,
+		            int iListPos)
 		{
-			Initialize(image, position, fRotation, bFlip, iLayer, PaletteSwapColor, iListPos);
+			Initialize(image, position, paletteSwapColor, fRotation, bFlip, iLayer, iListPos);
 		}
 
+		/// <summary>
+		/// Set all the items of this quad
+		/// </summary>
+		/// <param name="image">the id of teh bitmap for this quad</param>
+		/// <param name="position">the position to render the upper left at</param>
+		/// <param name="paletteSwapColor">the color to tint this quad</param>
+		/// <param name="fRotation">the amount to rotate this image</param>
+		/// <param name="bFlip">whether or not this image is flipped</param>
+		/// <param name="iLayer">the layer to render the bitmap at</param>
 		public void Initialize(ITexture image, 
-			Vector2 position, 
-			float fRotation, 
-			bool bFlip,
-			int iLayer,
-			Color PaletteSwapColor,
-			int iListPos)
+		                       Vector2 position, 
+		                       Color paletteSwapColor,
+		                       float fRotation, 
+		                       bool bFlip,
+		                       int iLayer,
+		                       int iListPos)
 		{
-			m_Image = image;
-			m_position = position;
-			m_fRotation = fRotation;
-			m_bFlip = bFlip;
+			Image = image;
+			Position = position;
+			Rotation = fRotation;
+			Flip = bFlip;
 			Layer = iLayer;
-			m_PaletteSwapColor = PaletteSwapColor;
+			PaletteSwapColor = paletteSwapColor;
 			ListPosition = iListPos;
+		}
+
+		/// <summary>
+		/// Given a drawlist color and the palette swap color, get the final color to use
+		/// </summary>
+		/// <returns>The color to drwa the image</returns>
+		/// <param name="DrawlistColor">Drawlist color.</param>
+		public Color FinalColor(Color DrawlistColor)
+		{
+			if (PaletteSwapColor != Color.White)
+			{
+				//We need to mix the palette and drawlist colors
+				Vector3 vectColor = DrawlistColor.ToVector3() * PaletteSwapColor.ToVector3();
+				Color FinalColor = new Color(vectColor);
+				FinalColor.A = DrawlistColor.A; //use the alpha value from the drawlist color
+				return FinalColor;
+			}
+			else
+			{
+				return DrawlistColor;
+			}
 		}
 
 		/// <summary>
@@ -82,32 +112,13 @@ namespace DrawListBuddy
 		/// <param name="MyRenderer">The renderer to draw this dude on</param>
 		public void Render(Color DrawlistColor, IRenderer MyRenderer, float fScale)
 		{
-			if (m_PaletteSwapColor != Color.White)
-			{
-				//setup the color
-				Vector3 vectColor = DrawlistColor.ToVector3() * m_PaletteSwapColor.ToVector3();
-				Color FinalColor = new Color(vectColor);
-				FinalColor.A = DrawlistColor.A; //use the alpha value from the drawlist color
-
-				MyRenderer.Draw(
-					m_Image,
-					m_position,
-					FinalColor,
-					m_fRotation,
-					m_bFlip,
-					fScale);
-			}
-			else
-			{
-				//Send this guy to the renderer
-				MyRenderer.Draw(
-					m_Image,
-					m_position,
-					DrawlistColor,
-					m_fRotation,
-					m_bFlip,
-					fScale);
-			}
+			MyRenderer.Draw(
+				Image,
+				Position,
+				FinalColor(DrawlistColor),
+				Rotation,
+				Flip,
+				fScale);
 		}
 
 		#endregion
