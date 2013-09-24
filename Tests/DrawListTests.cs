@@ -3,6 +3,7 @@ using System;
 using DrawListBuddy;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
+using GameTimer;
 
 namespace DrawList.Tests
 {
@@ -109,5 +110,118 @@ namespace DrawList.Tests
 		}
 
 		#endregion //Set
+
+		#region IsAlive tests
+
+		[Test()]
+		public void IsAliveDefault()
+		{
+			Assert.IsFalse(dude.IsAlive());
+		}
+
+		[Test()]
+		public void IsAliveSetNoTime()
+		{
+			dude.Set(0.0f, Color.White, 1.0f);
+			Assert.IsFalse(dude.IsAlive());
+		}
+
+		[Test()]
+		public void IsAliveSetWithTime()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			Assert.IsTrue(dude.IsAlive());
+		}
+
+		[Test()]
+		public void IsAliveUpdated()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			GameClock time = new GameClock();
+			time.CurrentTime = 2.0f;
+			time.TimeDelta = 0.5f;
+			Assert.IsTrue(dude.Update(time));
+		}
+
+		[Test()]
+		public void IsAliveUpdated1()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			GameClock time = new GameClock();
+			time.CurrentTime = 2.0f;
+			time.TimeDelta = 0.5f;
+			dude.Update(time);
+			Assert.IsTrue(dude.IsAlive());
+		}
+
+		[Test()]
+		public void IsAliveNoTime()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			GameClock time = new GameClock();
+			time.CurrentTime = 2.0f;
+			time.TimeDelta = 1.0f;
+			Assert.IsFalse(dude.Update(time));
+		}
+
+		[Test()]
+		public void IsAliveNoTime1()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			GameClock time = new GameClock();
+			time.CurrentTime = 2.0f;
+			time.TimeDelta = 1.0f;
+			dude.Update(time);
+			Assert.IsFalse(dude.IsAlive());
+		}
+
+		[Test()]
+		public void IsAliveWayOutOfTime()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			GameClock time = new GameClock();
+			time.CurrentTime = 20.0f;
+			time.TimeDelta = 10.0f;
+			Assert.IsFalse(dude.Update(time));
+		}
+
+		[Test()]
+		public void IsAliveWayOutOfTime1()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			GameClock time = new GameClock();
+			time.CurrentTime = 20.0f;
+			time.TimeDelta = 10.0f;
+			dude.Update(time);
+			Assert.IsFalse(dude.IsAlive());
+		}
+
+		#endregion //IsAlive tests
+
+		#region Update tests
+
+		[Test()]
+		public void UpdateAlpha()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			GameClock time = new GameClock();
+			time.CurrentTime = 2.0f;
+			time.TimeDelta = 0.5f;
+			dude.Update(time);
+			Assert.AreEqual(127, dude.CurrentColor.A);
+		}
+
+		[Test()]
+		public void UpdateAlphaAndDie()
+		{
+			dude.Set(1.0f, Color.White, 1.0f);
+			GameClock time = new GameClock();
+			time.CurrentTime = 4.0f;
+			time.TimeDelta = 2.5f;
+			dude.Update(time);
+			Assert.AreEqual(0, dude.CurrentColor.A);
+		}
+
+		#endregion //Update tests
 	}
 }

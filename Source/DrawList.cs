@@ -158,6 +158,15 @@ namespace DrawListBuddy
 		}
 
 		/// <summary>
+		/// Determines whether this instance is alive.
+		/// </summary>
+		/// <returns><c>true</c> if this instance is alive; otherwise, <c>false</c>.</returns>
+		public bool IsAlive()
+		{
+			return (0 < Timer.RemainingTime());
+		}
+
+		/// <summary>
 		/// Update the drawlist.
 		/// </summary>
 		/// <param name="rClock">R clock.</param>
@@ -168,28 +177,27 @@ namespace DrawListBuddy
 
 			Timer.Update(rClock);
 
-			if (0.0f >= Timer.RemainingTime())
+			//Check if this timer is still alive
+			bool alive = IsAlive();
+			if (alive)
 			{
-				//This drawlist is dead!
-				m_CurrentColor.A = 0;
-				return false;
-			}
-			else
-			{
-				//update the alpha channel
+				//This drawlist is still alive and needs to update the alpha channel
 
 				/*
 				alpha channel algo
 				255 * (current time / total time) = alpha channel
 				*/
 
-				//now that we have the current time delta, multiply the alpha by that
 				float fCurAlpha = StartAlpha * Timer.Lerp();
 				m_CurrentColor.A = (byte)fCurAlpha;
 			}
+			else
+			{
+				//This drawlist is dead!
+				m_CurrentColor.A = 0;
+			}
 
-			//This drawlist is still alive and needs to be updated again next frame
-			return true;
+			return alive;
 		}
 
 		#endregion
