@@ -18,7 +18,7 @@ namespace DrawListBuddy
 			}
 			else
 			{
-				return quad1.ListPosition.CompareTo(quad2.ListPosition);
+				return quad2.ListPosition.CompareTo(quad2.ListPosition);
 			}
 		}
 	}

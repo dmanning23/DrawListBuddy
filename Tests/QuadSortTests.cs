@@ -61,9 +61,9 @@ namespace DrawList.Tests
 			dude.AddQuad(new TestTexture("third"), Vector2.Zero, Color.White, 0.0f, false, 0);
 
 			dude.Sort();
-			TestTexture first = dude.Quads[0].Image as TestTexture;
+			TestTexture first = dude.Quads[2].Image as TestTexture;
 			TestTexture second = dude.Quads[1].Image as TestTexture;
-			TestTexture third = dude.Quads[2].Image as TestTexture;
+			TestTexture third = dude.Quads[0].Image as TestTexture;
 			Assert.AreEqual("first", first.Name);
 			Assert.AreEqual("second", second.Name);
 			Assert.AreEqual("third", third.Name);
@@ -120,9 +120,9 @@ namespace DrawList.Tests
 		[Test()]
 		public void TwoSameLayer()
 		{
-			dude.AddQuad(new TestTexture("third"), Vector2.Zero, Color.White, 0.0f, false, -20);
+			dude.AddQuad(new TestTexture("third"), Vector2.Zero, Color.White, 0.0f, false, -20); //drawn first because it is lowest number
+			dude.AddQuad(new TestTexture("second"), Vector2.Zero, Color.White, 0.0f, false, 10); //drawn second because layers match and added first
 			dude.AddQuad(new TestTexture("first"), Vector2.Zero, Color.White, 0.0f, false, 10);
-			dude.AddQuad(new TestTexture("second"), Vector2.Zero, Color.White, 0.0f, false, 10);
 
 			dude.Sort();
 			TestTexture first = dude.Quads[0].Image as TestTexture;
