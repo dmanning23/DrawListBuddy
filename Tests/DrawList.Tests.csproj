@@ -37,11 +37,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\..\GameTimer\Windows\GameTimer.Windows.csproj">
-      <Project>{6b6d4188-5c03-4e16-923b-96fdbc85b91a}</Project>
+      <Project>{6B6D4188-5C03-4E16-923B-96FDBC85B91A}</Project>
       <Name>GameTimer.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\RenderBuddy\Windows\RenderBuddy.Windows.csproj">
-      <Project>{5c9d6145-a763-4b79-8541-0c44c6dee72d}</Project>
+      <Project>{5C9D6145-A763-4B79-8541-0C44C6DEE72D}</Project>
       <Name>RenderBuddy.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\Windows\DrawListBuddy.Windows.csproj">
