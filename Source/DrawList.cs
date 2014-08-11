@@ -21,6 +21,8 @@ namespace DrawListBuddy
 		/// </summary>
 		private Color m_CurrentColor;
 
+		private static readonly object _lock = new object();
+
 		#endregion
 
 		#region Properties
@@ -61,7 +63,10 @@ namespace DrawListBuddy
 
 		static DrawList()
 		{
-			g_listQuadWarehouse = new Stack<Quad>();
+			lock (_lock)
+			{
+				g_listQuadWarehouse = new Stack<Quad>();
+			}
 		}
 
 		/// <summary>
@@ -101,18 +106,25 @@ namespace DrawListBuddy
 		                    bool bFlip, 
 		                    int iLayer)
 		{
-			//check if there is a quad in the warehouse
-			if (g_listQuadWarehouse.Count > 0)
+			Quad myQuad = null;
+
+			lock (_lock)
 			{
-				Quad myQuad = g_listQuadWarehouse.Pop();
-				myQuad.Initialize(image, position, paletteSwapColor, fRotation, bFlip, iLayer, Quads.Count);
-				Quads.Add(myQuad);
+				//check if there is a quad in the warehouse
+				if (g_listQuadWarehouse.Count > 0)
+				{
+					myQuad = g_listQuadWarehouse.Pop();
+				}
 			}
-			else
+
+			if (myQuad == null)
 			{
 				//otherwise order up a new one
-				Quads.Add(new Quad(image, position, paletteSwapColor, fRotation, bFlip, iLayer, Quads.Count));
+				myQuad = new Quad();
 			}
+
+			myQuad.Initialize(image, position, paletteSwapColor, fRotation, bFlip, iLayer, Quads.Count);
+			Quads.Add(myQuad);
 		}
 
 		/// <summary>
@@ -141,16 +153,19 @@ namespace DrawListBuddy
 		/// </summary>
 		public void Flush()
 		{
-			//push all the existing quads into the warehouse
-			for (int i = 0; i < Quads.Count; i++)
+			lock (_lock)
 			{
-				if (g_listQuadWarehouse.Count < 100)
+				//push all the existing quads into the warehouse
+				for (int i = 0; i < Quads.Count; i++)
 				{
-					g_listQuadWarehouse.Push(Quads[i]);
-				}
-				else
-				{
-					break;
+					if (g_listQuadWarehouse.Count < 100)
+					{
+						g_listQuadWarehouse.Push(Quads[i]);
+					}
+					else
+					{
+						break;
+					}
 				}
 			}
 

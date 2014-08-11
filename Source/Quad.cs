@@ -39,6 +39,10 @@ namespace DrawListBuddy
 
 		#region Methods
 
+		public Quad()
+		{
+		}
+
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
