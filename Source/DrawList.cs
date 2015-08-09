@@ -80,13 +80,13 @@ namespace DrawListBuddy
 			Scale = 1.0f;
 		}
 
-		public void Set(float fStartTime, Color fStartColor, float fScale)
+		public void Set(float startTime, Color startColor, float scale)
 		{
 			Flush();
-			Timer.Start(fStartTime);
-			BlendColor = fStartColor;
-			StartAlpha = fStartColor.A;
-			Scale = fScale;
+			Timer.Start(startTime);
+			BlendColor = startColor;
+			StartAlpha = startColor.A;
+			Scale = scale;
 		}
 
 		/// <summary>
