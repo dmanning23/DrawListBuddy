@@ -13,14 +13,14 @@ namespace DrawListBuddy
 		/// <summary>
 		/// warehouse of quads
 		/// </summary>
-		private static Stack<Quad> g_listQuadWarehouse;
-
-		/// <summary>
-		/// The color to render with
-		/// </summary>
-		private Color m_CurrentColor;
+		private static readonly Stack<Quad> _quadWarehouse;
 
 		private static readonly object _lock = new object();
+
+		/// <summary>
+		/// The color to blend with the final render
+		/// </summary>
+		private Color _blendColor;
 
 		#endregion
 
@@ -34,10 +34,10 @@ namespace DrawListBuddy
 		/// <summary>
 		/// Get or set the m_CurrentColor member variable
 		/// </summary>
-		public Color CurrentColor
+		public Color BlendColor
 		{
-			get { return m_CurrentColor; }
-			set { m_CurrentColor = value; }
+			get { return _blendColor; }
+			set { _blendColor = value; }
 		}
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace DrawListBuddy
 		{
 			lock (_lock)
 			{
-				g_listQuadWarehouse = new Stack<Quad>();
+				_quadWarehouse = new Stack<Quad>();
 			}
 		}
 
@@ -75,7 +75,7 @@ namespace DrawListBuddy
 		{
 			Timer = new CountdownTimer();
 			Quads = new List<Quad>();
-			m_CurrentColor = Color.White;
+			BlendColor = Color.White;
 			StartAlpha = 255;
 			Scale = 1.0f;
 		}
@@ -84,7 +84,7 @@ namespace DrawListBuddy
 		{
 			Flush();
 			Timer.Start(fStartTime);
-			m_CurrentColor = fStartColor;
+			BlendColor = fStartColor;
 			StartAlpha = fStartColor.A;
 			Scale = fScale;
 		}
@@ -94,36 +94,38 @@ namespace DrawListBuddy
 		/// </summary>
 		/// <param name="image">the id of teh bitmap for this quad</param>
 		/// <param name="position">the position to render the upper left at</param>
-		/// <param name="paletteSwapColor">the color to tint this quad</param>
-		/// <param name="fRotation">the amount to rotate this image</param>
-		/// <param name="bFlip">whether or not this image is flipped</param>
-		/// <param name="iLayer">the layer to render the bitmap at</param>
+		/// <param name="primaryColor">the color to tint this quad</param>
+		/// <param name="secondaryColor"></param>
+		/// <param name="rotation">the amount to rotate this image</param>
+		/// <param name="flip">whether or not this image is flipped</param>
+		/// <param name="layer">the layer to render the bitmap at</param>
 		public void AddQuad(ITexture image, 
-		                    Vector2 position, 
-		                    Color paletteSwapColor, 
-		                    float fRotation, 
-		                    bool bFlip, 
-		                    int iLayer)
+			Vector2 position,
+			Color primaryColor,
+			Color secondaryColor,
+			float rotation,
+			bool flip,
+			int layer)
 		{
-			Quad myQuad = null;
+			Quad quad = null;
 
 			lock (_lock)
 			{
 				//check if there is a quad in the warehouse
-				if (g_listQuadWarehouse.Count > 0)
+				if (_quadWarehouse.Count > 0)
 				{
-					myQuad = g_listQuadWarehouse.Pop();
+					quad = _quadWarehouse.Pop();
 				}
 			}
 
-			if (myQuad == null)
+			if (quad == null)
 			{
 				//otherwise order up a new one
-				myQuad = new Quad();
+				quad = new Quad();
 			}
 
-			myQuad.Initialize(image, position, paletteSwapColor, fRotation, bFlip, iLayer, Quads.Count);
-			Quads.Add(myQuad);
+			quad.Initialize(image, position, primaryColor, secondaryColor, rotation, flip, layer, Quads.Count);
+			Quads.Add(quad);
 		}
 
 		/// <summary>
@@ -137,13 +139,13 @@ namespace DrawListBuddy
 		/// <summary>
 		/// Render the draw list!
 		/// </summary>
-		/// <param name="MyRenderer">the renderer to sent it to</param>
-		public void Render(IRenderer MyRenderer)
+		/// <param name="renderer">the renderer to sent it to</param>
+		public void Render(IRenderer renderer)
 		{
 			Sort();
 			for (int i = 0; i < Quads.Count; i++)
 			{
-				Quads[i].Render(m_CurrentColor, MyRenderer, Scale);
+				Quads[i].Render(BlendColor, renderer, Scale);
 			}
 		}
 
@@ -157,9 +159,9 @@ namespace DrawListBuddy
 				//push all the existing quads into the warehouse
 				for (int i = 0; i < Quads.Count; i++)
 				{
-					if (g_listQuadWarehouse.Count < 100)
+					if (_quadWarehouse.Count < 100)
 					{
-						g_listQuadWarehouse.Push(Quads[i]);
+						_quadWarehouse.Push(Quads[i]);
 					}
 					else
 					{
@@ -183,13 +185,13 @@ namespace DrawListBuddy
 		/// <summary>
 		/// Update the drawlist.
 		/// </summary>
-		/// <param name="rClock">R clock.</param>
+		/// <param name="time">A clock with the current time.</param>
 		/// <returns>bool: true if the drawlist is still alive, false if it is dead</returns>
-		public bool Update(GameClock rClock)
+		public bool Update(GameClock time)
 		{
-			Debug.Assert(rClock.TimeDelta >= 0.0f);
+			Debug.Assert(time.TimeDelta >= 0.0f);
 
-			Timer.Update(rClock);
+			Timer.Update(time);
 
 			//Check if this timer is still alive
 			bool alive = IsAlive();
@@ -202,13 +204,13 @@ namespace DrawListBuddy
 				255 * (current time / total time) = alpha channel
 				*/
 
-				float fCurAlpha = StartAlpha * Timer.Lerp();
-				m_CurrentColor.A = (byte)fCurAlpha;
+				float alpha = StartAlpha * Timer.Lerp();
+				_blendColor.A = (byte)alpha;
 			}
 			else
 			{
 				//This drawlist is dead!
-				m_CurrentColor.A = 0;
+				_blendColor.A = 0;
 			}
 
 			return alive;
