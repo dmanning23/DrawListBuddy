@@ -126,6 +126,7 @@ namespace DrawListBuddy
 				Image,
 				Position,
 				FinalColor(drawlistColor, PrimaryColor),
+				FinalColor(drawlistColor, SecondaryColor),
 				Rotation,
 				Flip,
 				scale);
