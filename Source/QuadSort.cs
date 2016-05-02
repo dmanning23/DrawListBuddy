@@ -11,11 +11,11 @@ namespace DrawListBuddy
 		{
 			if (quad2.Layer != quad1.Layer)
 			{
-				return quad2.Layer.CompareTo(quad1.Layer);
+				return quad1.Layer.CompareTo(quad2.Layer);
 			}
 			else
 			{
-				return quad2.ListPosition.CompareTo(quad2.ListPosition);
+				return quad1.ListPosition.CompareTo(quad2.ListPosition);
 			}
 		}
 	}

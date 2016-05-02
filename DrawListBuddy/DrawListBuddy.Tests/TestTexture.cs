@@ -1,16 +1,15 @@
-using Microsoft.Xna.Framework.Graphics;
 using RenderBuddy;
 
-namespace DrawList.Tests
+namespace DrawListBuddy.Tests
 {
 	/// <summary>
 	/// This thing is a texture with a string. used only for testing
 	/// </summary>
-	public class TestTexture : ITexture
+	public class TestTexture : TextureInfo
 	{
 		public string Name { get; set; }
 
-		public int Width
+		public new int Width
 		{
 			get
 			{
@@ -18,7 +17,7 @@ namespace DrawList.Tests
 			}
 		}
 
-		public int Height
+		public new int Height
 		{
 			get
 			{

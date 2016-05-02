@@ -10,7 +10,7 @@ namespace DrawListBuddy
 	{
 		#region Properties
 
-		public ITexture Image { get; private set; }
+		public TextureInfo Image { get; private set; }
 
 		public Vector2 Position { get; private set; }
 
@@ -53,7 +53,7 @@ namespace DrawListBuddy
 		/// <param name="flip">whether or not this image is flipped</param>
 		/// <param name="layer">the layer to render the bitmap at</param>
 		/// <param name="listPos"></param>
-		public Quad(ITexture image,
+		public Quad(TextureInfo image,
 			Vector2 position, 
 			Color primaryColor,
 			Color secondaryColor,
@@ -76,7 +76,7 @@ namespace DrawListBuddy
 		/// <param name="flip">whether or not this image is flipped</param>
 		/// <param name="layer">the layer to render the bitmap at</param>
 		/// <param name="listPos"></param>
-		public void Initialize(ITexture image, 
+		public void Initialize(TextureInfo image, 
 			Vector2 position,
 			Color primaryColor,
 			Color secondaryColor,

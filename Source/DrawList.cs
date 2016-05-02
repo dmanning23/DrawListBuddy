@@ -99,7 +99,7 @@ namespace DrawListBuddy
 		/// <param name="rotation">the amount to rotate this image</param>
 		/// <param name="flip">whether or not this image is flipped</param>
 		/// <param name="layer">the layer to render the bitmap at</param>
-		public void AddQuad(ITexture image, 
+		public void AddQuad(TextureInfo image, 
 			Vector2 position,
 			Color primaryColor,
 			Color secondaryColor,

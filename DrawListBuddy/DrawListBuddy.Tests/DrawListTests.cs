@@ -5,14 +5,14 @@ using Microsoft.Xna.Framework;
 using RenderBuddy;
 using GameTimer;
 
-namespace DrawList.Tests
+namespace DrawListBuddy.Tests
 {
 	[TestFixture()]
 	public class DrawListTest
 	{
 		#region init
 
-		DrawListBuddy.DrawList dude;
+		DrawList dude;
 
 		[SetUp]
 		public void Setup()
@@ -45,7 +45,7 @@ namespace DrawList.Tests
 		[Test()]
 		public void DefaultStartColor()
 		{
-			Assert.AreEqual(Color.White, dude.CurrentColor);
+			Assert.AreEqual(Color.White, dude.BlendColor);
 		}
 
 		#endregion //Defaults
@@ -91,14 +91,14 @@ namespace DrawList.Tests
 		public void SetStartColor()
 		{
 			dude.Set(0.0f, Color.White, 1.0f);
-			Assert.AreEqual(Color.White, dude.CurrentColor);
+			Assert.AreEqual(Color.White, dude.BlendColor);
 		}
 
 		[Test()]
 		public void SetStartColor1()
 		{
 			dude.Set(0.0f, Color.Aqua, 1.0f);
-			Assert.AreEqual(Color.Aqua, dude.CurrentColor);
+			Assert.AreEqual(Color.Aqua, dude.BlendColor);
 		}
 
 		[Test()]
@@ -106,7 +106,7 @@ namespace DrawList.Tests
 		{
 			Color StartColor = new Color(Color.White, 0.5f);
 			dude.Set(0.0f, StartColor, 1.0f);
-			Assert.AreEqual(StartColor, dude.CurrentColor);
+			Assert.AreEqual(StartColor, dude.BlendColor);
 		}
 
 		#endregion //Set
@@ -208,7 +208,7 @@ namespace DrawList.Tests
 			time.CurrentTime = 2.0f;
 			time.TimeDelta = 0.5f;
 			dude.Update(time);
-			Assert.AreEqual(127, dude.CurrentColor.A);
+			Assert.AreEqual(127, dude.BlendColor.A);
 		}
 
 		[Test()]
@@ -219,7 +219,7 @@ namespace DrawList.Tests
 			time.CurrentTime = 4.0f;
 			time.TimeDelta = 2.5f;
 			dude.Update(time);
-			Assert.AreEqual(0, dude.CurrentColor.A);
+			Assert.AreEqual(0, dude.BlendColor.A);
 		}
 
 		#endregion //Update tests

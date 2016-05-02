@@ -4,7 +4,7 @@ using DrawListBuddy;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
 
-namespace DrawList.Tests
+namespace DrawListBuddy.Tests
 {
 	[TestFixture()]
 	public class QuadTests
@@ -26,14 +26,14 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadAdded()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Assert.AreEqual(1, dude.Quads.Count);
 		}
 
 		[Test()]
 		public void QuadPosition()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(Vector2.Zero, myDude.Position);
 		}
@@ -42,7 +42,7 @@ namespace DrawList.Tests
 		public void QuadPosition1()
 		{
 			Vector2 vect = new Vector2(10.0f, 20.0f);
-			dude.AddQuad(new XNATexture(), vect, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), vect, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(vect, myDude.Position);
 		}
@@ -50,32 +50,32 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadColor()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
-			Assert.AreEqual(Color.White, myDude.PaletteSwapColor);
+			Assert.AreEqual(Color.White, myDude.SecondaryColor);
 		}
 
 		[Test()]
 		public void QuadColor1()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.Aqua, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.Aqua, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
-			Assert.AreEqual(Color.Aqua, myDude.PaletteSwapColor);
+			Assert.AreEqual(Color.Aqua, myDude.PrimaryColor);
 		}
 
 		[Test()]
 		public void QuadColor2()
 		{
 			Color testdude = new Color(Color.AntiqueWhite, 0.5f);
-			dude.AddQuad(new XNATexture(), Vector2.Zero, testdude, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, testdude, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
-			Assert.AreEqual(testdude, myDude.PaletteSwapColor);
+			Assert.AreEqual(testdude, myDude.PrimaryColor);
 		}
 
 		[Test()]
 		public void QuadRotation()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(0.0f, myDude.Rotation);
 		}
@@ -83,7 +83,7 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadRotation1()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.Aqua, 50.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.Aqua, Color.White, 50.0f, false, 0);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(50.0f, myDude.Rotation);
 		}
@@ -91,7 +91,7 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadFlip()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(false, myDude.Flip);
 		}
@@ -99,7 +99,7 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadFlip1()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.Aqua, 0.0f, true, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.Aqua, Color.White, 0.0f, true, 0);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(true, myDude.Flip);
 		}
@@ -107,7 +107,7 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadLevel()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(0, myDude.Layer);
 		}
@@ -115,7 +115,7 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadLevel1()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.Aqua, 0.0f, false, 10);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.Aqua, Color.White, 0.0f, false, 10);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(10, myDude.Layer);
 		}
@@ -123,16 +123,16 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadTwoAdded()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Assert.AreEqual(2, dude.Quads.Count);
 		}
 
 		[Test()]
 		public void QuadListPos()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
 			Assert.AreEqual(0, myDude.ListPosition);
 		}
@@ -140,8 +140,8 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadListPos1()
 		{
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TextureInfo(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[1];
 			Assert.AreEqual(1, myDude.ListPosition);
 		}
@@ -153,18 +153,18 @@ namespace DrawList.Tests
 		[Test()]
 		public void QuadColorBothDefault()
 		{
-			dude.AddQuad(new TestTexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TestTexture(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
-			Assert.AreEqual(Color.White, myDude.FinalColor(dude.CurrentColor));
+			Assert.AreEqual(Color.White, myDude.FinalColor(Color.White, dude.BlendColor));
 		}
 
 		[Test()]
 		public void QuadColorDefault()
 		{
 			dude.Set(0.0f, Color.Red, 1.0f);
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TestTexture(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
-			Assert.AreEqual(Color.Red, myDude.FinalColor(dude.CurrentColor));
+			Assert.AreEqual(Color.Red, myDude.FinalColor(Color.White, dude.BlendColor));
 		}
 
 		[Test()]
@@ -172,9 +172,9 @@ namespace DrawList.Tests
 		{
 			Color myColor = new Color(Color.Red, 0.5f);
 			dude.Set(0.0f, myColor, 1.0f);
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.White, 0.0f, false, 0);
+			dude.AddQuad(new TestTexture(), Vector2.Zero, Color.White, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
-			Assert.AreEqual(myColor, myDude.FinalColor(dude.CurrentColor));
+			Assert.AreEqual(myColor, myDude.FinalColor(dude.BlendColor, Color.White));
 		}
 
 		[Test()]
@@ -182,9 +182,9 @@ namespace DrawList.Tests
 		{
 			Color myColor = new Color(Color.Red, 0.5f);
 			dude.Set(0.0f, myColor, 1.0f);
-			dude.AddQuad(new XNATexture(), Vector2.Zero, Color.Blue, 0.0f, false, 0);
+			dude.AddQuad(new TestTexture(), Vector2.Zero, Color.Blue, Color.White, 0.0f, false, 0);
 			Quad myDude = dude.Quads[0];
-			Assert.AreEqual(myColor.A, myDude.FinalColor(dude.CurrentColor).A);
+			Assert.AreEqual(myColor.A, myDude.FinalColor(dude.BlendColor, Color.White).A);
 		}
 
 		#endregion //QuadColor
