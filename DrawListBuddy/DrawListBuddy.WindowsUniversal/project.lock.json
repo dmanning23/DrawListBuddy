@@ -379,7 +379,7 @@
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
         }
       },
-      "RenderBuddy/1.0.3": {
+      "RenderBuddy/1.0.8": {
         "type": "package",
         "dependencies": {
           "CameraBuddy": "1.0.0",
@@ -2410,7 +2410,7 @@
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
         }
       },
-      "RenderBuddy/1.0.3": {
+      "RenderBuddy/1.0.8": {
         "type": "package",
         "dependencies": {
           "CameraBuddy": "1.0.0",
@@ -4356,7 +4356,7 @@
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
         }
       },
-      "RenderBuddy/1.0.3": {
+      "RenderBuddy/1.0.8": {
         "type": "package",
         "dependencies": {
           "CameraBuddy": "1.0.0",
@@ -6269,7 +6269,7 @@
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
         }
       },
-      "RenderBuddy/1.0.3": {
+      "RenderBuddy/1.0.8": {
         "type": "package",
         "dependencies": {
           "CameraBuddy": "1.0.0",
@@ -8218,7 +8218,7 @@
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
         }
       },
-      "RenderBuddy/1.0.3": {
+      "RenderBuddy/1.0.8": {
         "type": "package",
         "dependencies": {
           "CameraBuddy": "1.0.0",
@@ -10131,7 +10131,7 @@
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
         }
       },
-      "RenderBuddy/1.0.3": {
+      "RenderBuddy/1.0.8": {
         "type": "package",
         "dependencies": {
           "CameraBuddy": "1.0.0",
@@ -12080,7 +12080,7 @@
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
         }
       },
-      "RenderBuddy/1.0.3": {
+      "RenderBuddy/1.0.8": {
         "type": "package",
         "dependencies": {
           "CameraBuddy": "1.0.0",
@@ -14363,12 +14363,13 @@
         "lib/uap10.0/RandomExtensions.WindowsUniversal.pdb"
       ]
     },
-    "RenderBuddy/1.0.3": {
-      "sha512": "GpSMKWU0XMBzbvgq4UZKDUQ2MP3VD7uVtdG5NpMfTuy9VWDe7x7V4Uw83TEuht7Z98i416m+S8OTtKtrHlwkig==",
+    "RenderBuddy/1.0.8": {
+      "sha512": "bCb+VBXqZ+a/w4hV7/m0D8YiUE/4fXqRQpTTQk1/NxEIYnibmT1A5yioKbIaOywF4zaHxLGM/+OxmQiqFU59IQ==",
       "type": "package",
       "files": [
-        "RenderBuddy.1.0.3.nupkg.sha512",
+        "RenderBuddy.1.0.8.nupkg.sha512",
         "RenderBuddy.nuspec",
+        "content/Content/AnimationBuddyShader.fx",
         "lib/MonoAndroid10/RenderBuddy.Android.dll",
         "lib/MonoAndroid10/RenderBuddy.Android.pdb",
         "lib/Xamarin.iOS10/RenderBuddy.iOS.dll",
@@ -17152,7 +17153,7 @@
       "MonoGame.Framework.WindowsUniversal >= 3.5.1.1679",
       "PrimitiveBuddy >= 1.0.0",
       "RandomExtensions.dmanning23 >= 1.0.2",
-      "RenderBuddy >= 1.0.3",
+      "RenderBuddy >= 1.0.8",
       "ResolutionBuddy >= 1.0.3",
       "Vector2Extensions >= 1.0.1"
     ],
