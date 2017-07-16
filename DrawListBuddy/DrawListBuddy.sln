@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawListBuddy.Tests", "DrawListBuddy.Tests\DrawListBuddy.Tests.csproj", "{7F8C6BD9-8051-4536-A06C-ED0A4626AB5B}"
 EndProject
@@ -19,7 +19,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DrawlistBuddy.nuspec = DrawlistBuddy.nuspec
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DrawListBuddy.SharedProject", "DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.shproj", "{8BED716C-6481-48D7-895E-53E47AE74B74}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{3c79395f-698a-4b95-92e5-b8613d0d64d0}*SharedItemsImports = 4
+		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{8bed716c-6481-48d7-895e-53e47ae74b74}*SharedItemsImports = 13
+		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{b7ad05af-3ec3-4524-9334-37456f395e09}*SharedItemsImports = 4
+		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{e308f2d3-5868-4efa-82fb-dcf21a6666f6}*SharedItemsImports = 4
+		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{e9ec0c7f-e1c9-467a-af97-70352a25fb3a}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
 		AppStore|ARM = AppStore|ARM

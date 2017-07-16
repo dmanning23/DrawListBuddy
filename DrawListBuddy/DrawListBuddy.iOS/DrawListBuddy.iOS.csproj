@@ -44,7 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MatrixExtensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MatrixExtensions.1.0.1\lib\Xamarin.iOS10\MatrixExtensions.iOS.dll</HintPath>
+      <HintPath>..\packages\MatrixExtensions.1.0.2\lib\Xamarin.iOS10\MatrixExtensions.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
@@ -52,26 +52,26 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PrimitiveBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PrimitiveBuddy.1.0.0\lib\Xamarin.iOS10\PrimitiveBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\PrimitiveBuddy.1.0.3\lib\Xamarin.iOS10\PrimitiveBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RandomExtensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.2\lib\Xamarin.iOS10\RandomExtensions.iOS.dll</HintPath>
+      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.3\lib\Xamarin.iOS10\RandomExtensions.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RenderBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.1.0.8\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.1.0.10\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ResolutionBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ResolutionBuddy.1.0.3\lib\Xamarin.iOS10\ResolutionBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\ResolutionBuddy.1.0.8\lib\Xamarin.iOS10\ResolutionBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Vector2Extensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.1.0.1\lib\Xamarin.iOS10\Vector2Extensions.iOS.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.1.0.6\lib\Xamarin.iOS10\Vector2Extensions.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
@@ -80,15 +80,6 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Source\DrawList.cs">
-      <Link>DrawList.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Quad.cs">
-      <Link>Quad.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\QuadSort.cs">
-      <Link>QuadSort.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -97,5 +88,6 @@
   <ItemGroup>
     <Content Include="Content\AnimationBuddyShader.fx" />
   </ItemGroup>
+  <Import Project="..\DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
