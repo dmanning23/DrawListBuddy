@@ -105,7 +105,8 @@ namespace DrawListBuddy
 			Color secondaryColor,
 			float rotation,
 			bool flip,
-			int layer)
+			int layer,
+			float scale)
 		{
 			Quad quad = null;
 
@@ -124,7 +125,7 @@ namespace DrawListBuddy
 				quad = new Quad();
 			}
 
-			quad.Initialize(image, position, primaryColor, secondaryColor, rotation, flip, layer, Quads.Count);
+			quad.Initialize(image, position, primaryColor, secondaryColor, rotation, flip, layer, Quads.Count, scale);
 			Quads.Add(quad);
 		}
 

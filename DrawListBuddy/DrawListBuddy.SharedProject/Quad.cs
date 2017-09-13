@@ -34,6 +34,8 @@ namespace DrawListBuddy
 		/// <value>The list position.</value>
 		public int ListPosition { get; private set; }
 
+		public float Scale { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -60,9 +62,10 @@ namespace DrawListBuddy
 			float rotation, 
 			bool flip, 
 			int layer,
-			int listPos)
+			int listPos,
+			float scale)
 		{
-			Initialize(image, position, primaryColor, secondaryColor, rotation, flip, layer, listPos);
+			Initialize(image, position, primaryColor, secondaryColor, rotation, flip, layer, listPos, scale);
 		}
 
 		/// <summary>
@@ -83,7 +86,8 @@ namespace DrawListBuddy
 			float rotation,
 			bool flip,
 			int layer,
-			int listPos)
+			int listPos,
+			float scale)
 		{
 			Image = image;
 			Position = position;
@@ -93,6 +97,7 @@ namespace DrawListBuddy
 			PrimaryColor = primaryColor;
 			SecondaryColor = secondaryColor;
 			ListPosition = listPos;
+			Scale = scale;
 		}
 
 		/// <summary>
@@ -129,7 +134,7 @@ namespace DrawListBuddy
 				FinalColor(drawlistColor, SecondaryColor),
 				Rotation,
 				Flip,
-				scale);
+				scale * Scale);
 		}
 
 		#endregion
