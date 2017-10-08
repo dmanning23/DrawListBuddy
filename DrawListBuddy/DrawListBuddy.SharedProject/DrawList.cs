@@ -2,7 +2,6 @@ using GameTimer;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace DrawListBuddy
 {
@@ -190,8 +189,6 @@ namespace DrawListBuddy
 		/// <returns>bool: true if the drawlist is still alive, false if it is dead</returns>
 		public bool Update(GameClock time)
 		{
-			Debug.Assert(time.TimeDelta >= 0.0f);
-
 			Timer.Update(time);
 
 			//Check if this timer is still alive

@@ -5,7 +5,7 @@ namespace DrawListBuddy
 	/// <summary>
 	/// class for sorting the quads by layer
 	/// </summary>
-	class QuadSort : IComparer<Quad>
+	internal class QuadSort : IComparer<Quad>
 	{
 		public int Compare(Quad quad1, Quad quad2)
 		{
