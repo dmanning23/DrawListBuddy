@@ -179,7 +179,7 @@ namespace DrawListBuddy
 		/// <returns><c>true</c> if this instance is alive; otherwise, <c>false</c>.</returns>
 		public bool IsAlive()
 		{
-			return (0 < Timer.RemainingTime());
+			return (0 < Timer.RemainingTime);
 		}
 
 		/// <summary>

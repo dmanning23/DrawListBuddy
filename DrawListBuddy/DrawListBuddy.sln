@@ -23,10 +23,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawListBuddy.iOS", "DrawLi
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{7f8c6bd9-8051-4536-a06c-ed0a4626ab5b}*SharedItemsImports = 4
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{8bed716c-6481-48d7-895e-53e47ae74b74}*SharedItemsImports = 13
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{c1be7be5-593a-42e5-aa81-0fd2d9847a10}*SharedItemsImports = 4
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{e308f2d3-5868-4efa-82fb-dcf21a6666f6}*SharedItemsImports = 4
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{e9ec0c7f-e1c9-467a-af97-70352a25fb3a}*SharedItemsImports = 4
+		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{f90d9718-f1ae-40c0-ad7b-34607aeeea8b}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
