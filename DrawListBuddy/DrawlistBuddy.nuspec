@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>DrawlistBuddy</id>
-		<version>1.0.16</version>
+		<version>1.0.17</version>
 		<title>DrawListBuddy</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -59,7 +59,7 @@
 			</group>
 
 			<group targetFramework="net451">
-				<dependency id="MonoGame.Framework.DesktopGL" version="3.5"/>
+				<dependency id="MonoGame.Framework.WindowsDX" version="3.5"/>
         <dependency id="CameraBuddy" version="1.0"/>
         <dependency id="FilenameBuddy" version="1.0.2"/>
         <dependency id="GameTimer" version="1.0"/>
@@ -87,9 +87,9 @@
 		<file src="DrawListBuddy.WindowsUniversal\bin\Release\DrawListBuddy.WindowsUniversal.pdb" target="lib\uap10.0\DrawListBuddy.WindowsUniversal.pdb" />
 		<file src="DrawListBuddy.WindowsUniversal\bin\Release\DrawListBuddy.WindowsUniversal.dll" target="lib\uap10.0\DrawListBuddy.WindowsUniversal.dll" />
 
-		<!--DesktopGL-->
-		<file src="DrawListBuddy.DesktopGL\bin\Release\DrawListBuddy.DesktopGL.pdb" target="lib\net451\DrawListBuddy.DesktopGL.pdb" />
-		<file src="DrawListBuddy.DesktopGL\bin\Release\DrawListBuddy.DesktopGL.dll" target="lib\net451\DrawListBuddy.DesktopGL.dll" />
+		<!--WindowsDX-->
+		<file src="DrawListBuddy.WindowsDX\bin\Release\DrawListBuddy.WindowsDX.pdb" target="lib\net451\DrawListBuddy.WindowsDX.pdb" />
+		<file src="DrawListBuddy.WindowsDX\bin\Release\DrawListBuddy.WindowsDX.dll" target="lib\net451\DrawListBuddy.WindowsDX.dll" />
 
 	</files>
 </package>

@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawListBuddy.Tests", "DrawListBuddy.Tests\DrawListBuddy.Tests.csproj", "{7F8C6BD9-8051-4536-A06C-ED0A4626AB5B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawListBuddy.WindowsUniversal", "DrawListBuddy.WindowsUniversal\DrawListBuddy.WindowsUniversal.csproj", "{E9EC0C7F-E1C9-467A-AF97-70352A25FB3A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawListBuddy.DesktopGL", "DrawListBuddy.DesktopGL\DrawListBuddy.DesktopGL.csproj", "{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B07C4F46-70A9-4EDB-8AF1-6EDD5582FED7}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,12 +19,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawListBuddy.Android", "Dr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawListBuddy.iOS", "DrawListBuddy.iOS\DrawListBuddy.iOS.csproj", "{F90D9718-F1AE-40C0-AD7B-34607AEEEA8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawListBuddy.WindowsDX", "DrawListBuddy.WindowsDX\DrawListBuddy.WindowsDX.csproj", "{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{7f8c6bd9-8051-4536-a06c-ed0a4626ab5b}*SharedItemsImports = 4
+		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{896e38be-a552-4c51-84c6-49c2ec4c9caa}*SharedItemsImports = 4
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{8bed716c-6481-48d7-895e-53e47ae74b74}*SharedItemsImports = 13
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{c1be7be5-593a-42e5-aa81-0fd2d9847a10}*SharedItemsImports = 4
-		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{e308f2d3-5868-4efa-82fb-dcf21a6666f6}*SharedItemsImports = 4
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{e9ec0c7f-e1c9-467a-af97-70352a25fb3a}*SharedItemsImports = 4
 		DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems*{f90d9718-f1ae-40c0-ad7b-34607aeeea8b}*SharedItemsImports = 4
 	EndGlobalSection
@@ -93,30 +93,6 @@ Global
 		{E9EC0C7F-E1C9-467A-AF97-70352A25FB3A}.Release|x64.Build.0 = Release|x64
 		{E9EC0C7F-E1C9-467A-AF97-70352A25FB3A}.Release|x86.ActiveCfg = Release|x86
 		{E9EC0C7F-E1C9-467A-AF97-70352A25FB3A}.Release|x86.Build.0 = Release|x86
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.AppStore|Any CPU.Build.0 = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.AppStore|ARM.ActiveCfg = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.AppStore|ARM.Build.0 = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.AppStore|x64.ActiveCfg = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.AppStore|x64.Build.0 = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.AppStore|x86.ActiveCfg = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.AppStore|x86.Build.0 = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Debug|ARM.Build.0 = Debug|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Debug|x64.Build.0 = Debug|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Debug|x86.Build.0 = Debug|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Release|ARM.ActiveCfg = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Release|ARM.Build.0 = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Release|x64.ActiveCfg = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Release|x64.Build.0 = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Release|x86.ActiveCfg = Release|Any CPU
-		{E308F2D3-5868-4EFA-82FB-DCF21A6666F6}.Release|x86.Build.0 = Release|Any CPU
 		{C1BE7BE5-593A-42E5-AA81-0FD2D9847A10}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
 		{C1BE7BE5-593A-42E5-AA81-0FD2D9847A10}.AppStore|Any CPU.Build.0 = Release|Any CPU
 		{C1BE7BE5-593A-42E5-AA81-0FD2D9847A10}.AppStore|ARM.ActiveCfg = Release|Any CPU
@@ -165,9 +141,36 @@ Global
 		{F90D9718-F1AE-40C0-AD7B-34607AEEEA8B}.Release|x64.Build.0 = Release|Any CPU
 		{F90D9718-F1AE-40C0-AD7B-34607AEEEA8B}.Release|x86.ActiveCfg = Release|Any CPU
 		{F90D9718-F1AE-40C0-AD7B-34607AEEEA8B}.Release|x86.Build.0 = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.AppStore|ARM.Build.0 = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.AppStore|x64.Build.0 = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.AppStore|x86.Build.0 = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Debug|ARM.Build.0 = Debug|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Debug|x64.Build.0 = Debug|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Debug|x86.Build.0 = Debug|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Release|ARM.Build.0 = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Release|x64.ActiveCfg = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Release|x64.Build.0 = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Release|x86.ActiveCfg = Release|Any CPU
+		{896E38BE-A552-4C51-84C6-49C2EC4C9CAA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30808175-E129-4B85-B11D-CF86B1A7F993}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = DrawListBuddy.Windows.csproj
