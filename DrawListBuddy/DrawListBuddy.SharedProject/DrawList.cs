@@ -202,7 +202,7 @@ namespace DrawListBuddy
 				255 * (current time / total time) = alpha channel
 				*/
 
-				float alpha = StartAlpha * Timer.Lerp();
+				float alpha = StartAlpha * Timer.Lerp;
 				_blendColor.A = (byte)alpha;
 			}
 			else
