@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>DrawlistBuddy</id>
-		<version>1.0.18</version>
+		<version>1.0.20</version>
 		<title>DrawListBuddy</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -17,23 +17,23 @@
 
 			<!--Xamarin.Android-->
 			<group targetFramework="MonoAndroid10">
-				<dependency id="MonoGame.Framework.Android" version="3.5"/>
-        <dependency id="CameraBuddy" version="1.0"/>
-        <dependency id="FilenameBuddy" version="1.0.2"/>
-        <dependency id="GameTimer" version="1.0"/>
-        <dependency id="MatrixExtensions" version="1.0.1"/>
-        <dependency id="PrimitiveBuddy" version="1.0"/>
-        <dependency id="RandomExtensions.dmanning23" version="1.0"/>
-        <dependency id="RenderBuddy" version="1.0"/>
-        <dependency id="ResolutionBuddy" version="1.0"/>
-        <dependency id="Vector2Extensions" version="1.0.1"/>
+				<dependency id="MonoGame.Framework.Android" version="3.6"/>
+				<dependency id="CameraBuddy" version="1.0"/>
+				<dependency id="FilenameBuddy" version="1.0"/>
+				<dependency id="GameTimer" version="1.0"/>
+				<dependency id="MatrixExtensions" version="1.0.1"/>
+				<dependency id="PrimitiveBuddy" version="1.0"/>
+				<dependency id="RandomExtensions.dmanning23" version="1.0"/>
+				<dependency id="RenderBuddy" version="1.0"/>
+				<dependency id="ResolutionBuddy" version="1.0"/>
+				<dependency id="Vector2Extensions" version="1.0.1"/>
 			</group>
 
 			<!--Xamarin.iOS Unified-->
 			<group targetFramework="Xamarin.iOS10">
-				<dependency id="MonoGame.Framework.iOS" version="3.5"/>
+				<dependency id="MonoGame.Framework.iOS" version="3.6"/>
 				<dependency id="CameraBuddy" version="1.0"/>
-				<dependency id="FilenameBuddy" version="1.0.2"/>
+				<dependency id="FilenameBuddy" version="1.0"/>
 				<dependency id="GameTimer" version="1.0"/>
 				<dependency id="MatrixExtensions" version="1.0.1"/>
 				<dependency id="PrimitiveBuddy" version="1.0"/>
@@ -45,30 +45,30 @@
 
 			<!--Win Universal-->
 			<group targetFramework="uap10.0">
-				<dependency id="MonoGame.Framework.WindowsUniversal" version="3.5"/>
+				<dependency id="MonoGame.Framework.WindowsUniversal" version="3.6"/>
 				<dependency id="Microsoft.NETCore.UniversalWindowsPlatform" version="5.1"/>
-        <dependency id="CameraBuddy" version="1.0"/>
-        <dependency id="FilenameBuddy" version="1.0.2"/>
-        <dependency id="GameTimer" version="1.0"/>
-        <dependency id="MatrixExtensions" version="1.0.1"/>
-        <dependency id="PrimitiveBuddy" version="1.0"/>
-        <dependency id="RandomExtensions.dmanning23" version="1.0"/>
-        <dependency id="RenderBuddy" version="1.0"/>
-        <dependency id="ResolutionBuddy" version="1.0"/>
-        <dependency id="Vector2Extensions" version="1.0.1"/>
+				<dependency id="CameraBuddy" version="1.0"/>
+				<dependency id="FilenameBuddy" version="1.0"/>
+				<dependency id="GameTimer" version="1.0"/>
+				<dependency id="MatrixExtensions" version="1.0.1"/>
+				<dependency id="PrimitiveBuddy" version="1.0"/>
+				<dependency id="RandomExtensions.dmanning23" version="1.0"/>
+				<dependency id="RenderBuddy" version="1.0"/>
+				<dependency id="ResolutionBuddy" version="1.0"/>
+				<dependency id="Vector2Extensions" version="1.0.1"/>
 			</group>
 
 			<group targetFramework="net451">
-				<dependency id="MonoGame.Framework.WindowsDX" version="3.5"/>
-        <dependency id="CameraBuddy" version="1.0"/>
-        <dependency id="FilenameBuddy" version="1.0.2"/>
-        <dependency id="GameTimer" version="1.0"/>
-        <dependency id="MatrixExtensions" version="1.0.1"/>
-        <dependency id="PrimitiveBuddy" version="1.0"/>
-        <dependency id="RandomExtensions.dmanning23" version="1.0"/>
-        <dependency id="RenderBuddy" version="1.0"/>
-        <dependency id="ResolutionBuddy" version="1.0"/>
-        <dependency id="Vector2Extensions" version="1.0.1"/>
+				<dependency id="MonoGame.Framework.WindowsDX" version="3.6"/>
+				<dependency id="CameraBuddy" version="1.0"/>
+				<dependency id="FilenameBuddy" version="1.0"/>
+				<dependency id="GameTimer" version="1.0"/>
+				<dependency id="MatrixExtensions" version="1.0.1"/>
+				<dependency id="PrimitiveBuddy" version="1.0"/>
+				<dependency id="RandomExtensions.dmanning23" version="1.0"/>
+				<dependency id="RenderBuddy" version="1.0"/>
+				<dependency id="ResolutionBuddy" version="1.0"/>
+				<dependency id="Vector2Extensions" version="1.0.1"/>
 			</group>
 
 		</dependencies>
