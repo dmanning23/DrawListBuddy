@@ -145,7 +145,7 @@ namespace DrawListBuddy
 			Sort();
 			for (int i = 0; i < Quads.Count; i++)
 			{
-				Quads[i].Render(BlendColor, renderer, Scale);
+				Quads[i].Render(BlendColor, renderer, Scale, (float)(i * .001f));
 			}
 		}
 

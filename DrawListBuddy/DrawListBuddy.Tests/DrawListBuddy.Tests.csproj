@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -11,6 +12,8 @@
     <AssemblyName>DrawListBuddy.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CameraBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CameraBuddy.1.0.9\lib\net451\CameraBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\CameraBuddy.1.0.10\lib\net451\CameraBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="FilenameBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.1.0.11\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.1.0.12\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="GameTimer.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GameTimer.1.0.8\lib\net452\GameTimer.WindowsDX.dll</HintPath>
@@ -49,9 +52,8 @@
       <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\MonoGame.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PrimitiveBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PrimitiveBuddy.1.0.4\lib\net451\PrimitiveBuddy.WindowsDX.dll</HintPath>
@@ -60,14 +62,14 @@
       <HintPath>..\packages\RandomExtensions.dmanning23.1.0.5\lib\net452\RandomExtensions.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="RenderBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.1.0.28\lib\net451\RenderBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.1.0.34\lib\net451\RenderBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="ResolutionBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ResolutionBuddy.1.0.16\lib\net451\ResolutionBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Vector2Extensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.1.0.9\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.1.0.11\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -84,4 +86,10 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="..\DrawListBuddy.SharedProject\DrawListBuddy.SharedProject.projitems" Label="Shared" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
+  </Target>
 </Project>

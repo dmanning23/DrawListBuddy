@@ -125,7 +125,7 @@ namespace DrawListBuddy
 		/// <summary>
 		/// Render this textured quad
 		/// </summary>
-		public void Render(Color drawlistColor, IRenderer renderer, float scale)
+		public void Render(Color drawlistColor, IRenderer renderer, float scale, float layer)
 		{
 			renderer.Draw(
 				Image,
@@ -134,7 +134,8 @@ namespace DrawListBuddy
 				FinalColor(drawlistColor, SecondaryColor),
 				Rotation,
 				Flip,
-				scale * Scale);
+				scale * Scale,
+				layer);
 		}
 
 		#endregion
